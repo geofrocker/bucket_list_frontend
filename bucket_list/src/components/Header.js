@@ -5,10 +5,18 @@ class Header extends React.Component{
         return (
             <header className="header">
                 <div className="header-block header-block-collapse hidden-lg-up">
-                    <button type="button" className="collapse-btn" id="sidebar-collapse-btn">
+                    <button className="collapse-btn" id="sidebar-collapse-btn">
                         <i className="fa fa-bars"></i>
                     </button>
                 </div>
+
+                <div className="header-block header-block-buttons">
+                    <a href="https://github.com/ridgekimani/bucket_list" className="btn btn-sm header-btn">
+                        <i className="fa fa-github-alt"></i>
+                        <span> View on GitHub</span>
+                    </a>
+                </div>
+
             </header>
         )
     }

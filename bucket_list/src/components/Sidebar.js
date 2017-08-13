@@ -16,14 +16,14 @@ class Sidebar extends React.Component{
                             <li className="">
                                 <a href="#">
                                     <i className="fa fa-home"></i>
-                                    Add Bucket
+                                     Add Bucket
                                 </a>
                             </li>
 
                             <li className="">
                                 <a href="#">
                                     <i className="fa fa-bitbucket"></i>
-                                    View Buckets
+                                     View Buckets
                                 </a>
                             </li>
                         </ul>
