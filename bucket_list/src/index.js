@@ -3,7 +3,6 @@ import ReactDOM, {render} from 'react-dom';
 import Header from './components/Header';
 import SideBar from './components/Sidebar';
 
-
 class Index extends Component{
     render(){
         return (

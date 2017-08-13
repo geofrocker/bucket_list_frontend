@@ -13,14 +13,14 @@ class Sidebar extends React.Component{
 
                     <nav className="menu">
                         <ul className="nav metismenu" id="sidebar-menu">
-                            <li className="active">
+                            <li className="">
                                 <a href="#">
                                     <i className="fa fa-home"></i>
                                     Add Bucket
                                 </a>
                             </li>
 
-                            <li className="active">
+                            <li className="">
                                 <a href="#">
                                     <i className="fa fa-bitbucket"></i>
                                     View Buckets
