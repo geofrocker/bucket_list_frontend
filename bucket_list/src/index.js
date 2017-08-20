@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import Header from './components/Header';
-import SideBar from './components/Sidebar';
 import CreateBucket from './views/CreateBucket';
+import ViewBuckets from './views/ViewBuckets';
+import Register from './views/Register';
+import Login from './views/Login';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 
@@ -10,10 +11,11 @@ class Index extends Component{
     render(){
         return (
             <div>
-                <Header/>
-                <SideBar/>
                 <Switch>
-                    <Route path="/bucketlists/create" component={CreateBucket}/>
+                    <Route path="/register/" component={Register}/>
+                    <Route path="/login/" component={Login}/>
+                    <Route path="/bucketlists/create/" component={CreateBucket}/>
+                    <Route path="/bucketlists/view/" component={ViewBuckets}/>
                 </Switch>
             </div>
         )
