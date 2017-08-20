@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Sidebar extends React.Component{
     render(){
@@ -14,17 +15,17 @@ class Sidebar extends React.Component{
                     <nav className="menu">
                         <ul className="nav metismenu" id="sidebar-menu">
                             <li className="">
-                                <a href="#">
+                                <Link to="/bucketlists/create">
                                     <i className="fa fa-home"></i>
-                                     Add Bucket
-                                </a>
+                                    Add Bucket
+                                </Link>
                             </li>
 
                             <li className="">
-                                <a href="#">
+                                <Link to="/bucketlists/view">
                                     <i className="fa fa-bitbucket"></i>
                                      View Buckets
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>

@@ -11,7 +11,7 @@ class Header extends React.Component{
                 </div>
 
                 <div className="header-block header-block-buttons">
-                    <a href="https://github.com/ridgekimani/bucket_list" className="btn btn-sm header-btn">
+                    <a href="https://github.com/ridgekimani/bucket_list_frontend" className="btn btn-sm header-btn">
                         <i className="fa fa-github-alt"></i>
                         <span> View on GitHub</span>
                     </a>
