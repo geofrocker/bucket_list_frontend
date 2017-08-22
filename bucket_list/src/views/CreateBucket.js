@@ -1,8 +1,63 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import axios from 'axios'
 
 class CreateBucket extends Component{
+    constructor(props){
+        super(props);
+        this.state = {bucket_name:'', description:'', category:'', isAuthorized:false};
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // componentDidMount(){
+    //     axios({
+    //         url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
+    //         method: "GET"
+    //     }).then(({data}) =>{
+    //         console.log(data);
+    //         this.setState({array: data})
+    //     })
+    //
+    // }
+
+    handleNameChange(event){
+        this.setState({bucket_name: event.target.value})
+    }
+
+    handleDescriptionChange(event){
+        this.setState({description: event.target.value})
+    }
+
+    handleCategoryChange(event){
+        this.setState({category: event.target.value})
+    }
+
+    handleSubmit(event){
+        let data = {
+            bucket_name:this.state.bucket_name,
+            description: this.state.description,
+            category: this.state.category
+        };
+        
+        axios({
+            url: 'http://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
+            method: 'POST',
+            datatype: "json",
+            data: data,
+            
+        }).then(function (response) {
+            alert(response.response.data)
+        }). catch(function (xhr) {
+            if ("response" in xhr){
+                alert(xhr.response.data.error);
+            }
+        })
+    }
+
     render(){
         return(
             <div>
@@ -15,7 +70,7 @@ class CreateBucket extends Component{
                         </h3>
                     </div>
 
-                    <form name="item" method="post">
+                    <form name="item" method="post" onsubmit={this.handleSubmit}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">
@@ -23,7 +78,7 @@ class CreateBucket extends Component{
                                 </label>
 
                                 <div className="col-sm-10">
-                                    <input type="text" id="bucket_name" className="form-control boxed" placeholder="" />
+                                    <input type="text" name="bucket_name" value={this.state.bucket_name} onChange={this.handleNameChange} className="form-control boxed" placeholder="" />
                                 </div>
                             </div>
 
@@ -33,7 +88,7 @@ class CreateBucket extends Component{
                                 </label>
 
                                 <div className="col-sm-10">
-                                    <input type="text" id="description" className="form-control boxed" placeholder="" />
+                                    <input type="text" name="description" value={this.state.description} onChange={this.handleDescriptionChange} className="form-control boxed" placeholder="" />
                                 </div>
                             </div>
 
@@ -43,9 +98,7 @@ class CreateBucket extends Component{
                                 </label>
 
                                 <div className="col-sm-10">
-                                    <select className="c-select form-control boxed" id="category">
-                                        <option selected disabled>Select Category</option>
-                                    </select>
+                                    <input type="text" name="category" value={this.state.category} onChange={this.handleCategoryChange} className="form-control boxed" placeholder="Eg. Travel" />
                                 </div>
                             </div>
 
