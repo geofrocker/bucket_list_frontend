@@ -20,25 +20,26 @@ class Login extends Component{
     }
 
     handleSubmit(event){
+        event.preventDefault();
         axios({
             url : 'http://ridge-bucket-list-api.herokuapp.com/api/v1/auth/login',
             data: {email: this.state.email, password: this.state.password},
             datatype: "json",
             method: "post"
         })
-            .then(function (response) {
-                this.setState({redirect: true})
-                window.location.href = '/'
+            .then((response)=>{
+                this.setState({redirect:true});
         })
-            .catch(function (xhr) {
-                if ("response" in xhr){
-                    alert(xhr.response.data.error);
-                }
+            .catch((xhr) =>{
+                alert(xhr.response.data.error);
+
             });
-        event.preventDefault()
     }
 
     render(){
+        if (this.state.redirect === true){
+            return <Redirect to="/bucketlists/create"/>
+        }
         return(
             <div className="auth">
                 <div className="auth-container">

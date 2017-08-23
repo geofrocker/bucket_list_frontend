@@ -13,16 +13,19 @@ class CreateBucket extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidMount(){
-    //     axios({
-    //         url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
-    //         method: "GET"
-    //     }).then(({data}) =>{
-    //         console.log(data);
-    //         this.setState({array: data})
-    //     })
-    //
-    // }
+    componentDidMount() {
+        axios({
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
+            method: "GET",
+            headers: {token: "This is nice"}
+        }).then(function (response) {
+            alert(response.response.data)
+        })
+            .catch(function (xhr) {
+                alert(xhr.response.data.error)
+            });
+
+    }
 
     handleNameChange(event){
         this.setState({bucket_name: event.target.value})
@@ -49,11 +52,13 @@ class CreateBucket extends Component{
             datatype: "json",
             data: data,
             
-        }).then(function (response) {
-            alert(response.response.data)
-        }). catch(function (xhr) {
-            if ("response" in xhr){
-                alert(xhr.response.data.error);
+        })
+            .then(function (response) {
+                alert(response.response.data)
+        })
+            . catch(function (xhr) {
+                    if ("response" in xhr){
+                        alert(xhr.response.data.error);
             }
         })
     }
