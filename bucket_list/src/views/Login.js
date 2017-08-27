@@ -6,7 +6,7 @@ class Login extends Component{
 
     constructor(props) {
         super(props);
-        this.state = {email: '', password: '', redirect: false};
+        this.state = {email: '', password: '', redirect: false, token: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -22,12 +22,15 @@ class Login extends Component{
     handleSubmit(event){
         event.preventDefault();
         axios({
-            url : 'http://ridge-bucket-list-api.herokuapp.com/api/v1/auth/login',
+            // url : 'http://ridge-bucket-list-api.herokuapp.com/api/v1/auth/login',
+            url: 'http://127.0.0.1:5000/api/v1/auth/login',
             data: {email: this.state.email, password: this.state.password},
             datatype: "json",
             method: "post"
         })
             .then((response)=>{
+                console.log(JSON.stringify(response));
+                window.localStorage.setItem('token', response.data.token)
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
