@@ -3,18 +3,25 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 
-
-class ViewBuckets extends Component{
-
+class ViewBucket extends Component{
     constructor(props){
         super(props);
-        this.state = {isAuthorized: false, data:[]};
+        console.log(this.props.match.params.bucket_id);
+        this.state = {
+            bucket_name: '',
+            description: '',
+            created: '',
+            isAuthorized: false,
+            data:[],
+            bucket_id: this.props.match.params.bucket_id
+
+        };
     }
 
     componentDidMount() {
         axios({
             // url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -22,7 +29,13 @@ class ViewBuckets extends Component{
             }
         })
             .then((response)=>{
-                this.setState({data:response.data.buckets, isAuthorized: true});
+                this.setState(
+                    {
+                        bucket_name:response.data.bucket.bucket_name,
+                        description: response.data.bucket.description,
+                        created: response.data.bucket.created,
+                        isAuthorized: true
+                    });
                 console.log(this.state.isAuthorized);
 
             })
@@ -45,7 +58,7 @@ class ViewBuckets extends Component{
                 <Sidebar/>
                 <article className="content responsive-tables-page">
                     <div className="title-block">
-                        <h1 className="title"> View Buckets </h1>
+                        <h1 className="title"> View Bucket </h1>
                     </div>
 
                     <section className="section">
@@ -70,19 +83,16 @@ class ViewBuckets extends Component{
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>{this.state.data.map(function(item, key){
-                                                        return (
-                                                            <tr key={key}>
-                                                                <td>{item.bucket_name}</td>
-                                                                <td>{item.description}</td>
-                                                                <td>{item.created}</td>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>{this.state.bucket_name}</td>
+                                                                <td>{this.state.description}</td>
+                                                                <td>{this.state.created}</td>
                                                                 <td className="center"><button type="button"  className="btn btn-success-outline btn-sm">Add</button></td>
                                                                 <td className="center" ><button type="button" className="btn btn-success-outline btn-sm">View</button> </td>
                                                                 <td className="center" ><button type="button" className="btn btn-success-outline btn-sm">Update</button></td>
                                                                 <td className="center"><button type="button"  className="btn btn-danger-outline btn-sm">Delete</button></td>
                                                             </tr>
-                                                        )
-                                                    })}
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -96,6 +106,6 @@ class ViewBuckets extends Component{
             </div>
         )
     }
-}
 
-export default ViewBuckets;
+}
+export default ViewBucket;
