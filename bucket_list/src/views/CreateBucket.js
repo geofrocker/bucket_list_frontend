@@ -16,7 +16,7 @@ class CreateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
+            url: 'http://127.0.0.1:5000/api/v1/callback',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -43,9 +43,9 @@ class CreateBucket extends Component{
         this.setState({category: event.target.value})
     }
 
+
     handleSubmit(event){
         event.preventDefault();
-
         let data = {
             bucket_name:this.state.bucket_name,
             description: this.state.description,
@@ -53,6 +53,7 @@ class CreateBucket extends Component{
         };
         
         axios({
+            // url: 'http://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
             url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: 'POST',
             datatype: "json",
@@ -68,12 +69,12 @@ class CreateBucket extends Component{
         })
             .catch((xhr) =>{
                 alert(xhr.response.data.error);
+                window.localStorage.setItem('isLoggedIn', false)
         });
     }
 
     render(){
-        let isLoggedIn = window.localStorage.getItem('isLoggedIn');
-        if (!isLoggedIn){
+        if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">

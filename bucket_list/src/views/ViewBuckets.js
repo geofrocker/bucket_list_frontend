@@ -10,24 +10,14 @@ class ViewBuckets extends Component{
     constructor(props){
         super(props);
         this.state = {isAuthorized: false, data:[]};
+        this.handleUpdate = this.handleUpdate.bind(this)
+    }
+
+    handleUpdate(){
+        console.log('awesome')
     }
 
     componentDidMount() {
-        axios({
-            url: 'http://127.0.0.1:5000/api/v1/callback',
-            method:"GET",
-            headers: {
-                'token': window.localStorage.getItem('token'),
-                'Content-Type': 'application/json'
-            }
-        }).then((response)=>{
-            this.setState({isAuthorized: true});
-            window.localStorage.setItem('isLoggedIn', true)
-        }).catch((xhr)=>{
-            this.setState({isAuthorized: false});
-            window.localStorage.setItem('isLoggedIn', false)
-        });
-
         axios({
             url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: "GET",
@@ -46,10 +36,8 @@ class ViewBuckets extends Component{
             });
     }
 
-
     render(){
-        let isLoggedIn = window.localStorage.getItem('isLoggedIn');
-        if (!isLoggedIn){
+        if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">
@@ -60,7 +48,7 @@ class ViewBuckets extends Component{
                 </div>
             )
         }
-         
+
         return(
             <div>
                 <Header/>
@@ -98,7 +86,7 @@ class ViewBuckets extends Component{
                                                                 <td>{item.description}</td>
                                                                 <td>{item.created}</td>
                                                                 <td className="center">
-                                                                    <button type="button"  className="btn btn-success-outline btn-sm">Add</button>
+                                                                    <Link to={'/bucketlists/' + item.id + '/items/create/'}><td>Add</td></Link>
                                                                 </td>
                                                                 <td className="center" >
                                                                     <button type="button" className="btn btn-success-outline btn-sm">View</button>
