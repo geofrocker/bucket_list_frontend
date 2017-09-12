@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import CreateBucket from './views/CreateBucket';
 import ViewBuckets from './views/ViewBuckets';
-import ViewBucket from './views/ViewBucket'
 import UpdateBucket from './views/UpdateBucket'
 import Register from './views/Register';
 import Login from './views/Login';

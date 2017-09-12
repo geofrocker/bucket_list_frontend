@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 class UpdateBucket extends Component{
@@ -12,6 +13,7 @@ class UpdateBucket extends Component{
         this.handleUpdateName = this.handleUpdateName.bind(this);
         this.handleUpdateDescription = this.handleUpdateDescription.bind(this);
         this.handleUpdateCategory = this.handleUpdateCategory.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     handleUpdateName(event){
@@ -29,6 +31,21 @@ class UpdateBucket extends Component{
 
     componentDidMount() {
         axios({
+            url: 'http://127.0.0.1:5000/api/v1/callback',
+            method:"GET",
+            headers: {
+                'token': window.localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            }
+        }).then((response)=>{
+            this.setState({isAuthorized: true});
+            window.localStorage.setItem('isLoggedIn', true)
+        }).catch((xhr)=>{
+            this.setState({isAuthorized: false});
+            window.localStorage.setItem('isLoggedIn', false)
+        });
+
+        axios({
             url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
@@ -43,24 +60,21 @@ class UpdateBucket extends Component{
                 this.setState ({bucket_name: bucket_name, description:description, category:category })
             })
             .catch((xhr) =>{
-                window.localStorage.setItem('isLoggedIn', false)
+                console.log(JSON.stringify(xhr));
 
             });
     }
 
     handleUpdate(event){
         event.preventDefault();
-        console.log(this.bucket_name)
         let data = {
             bucket_name:this.state.bucket_name,
             description:this.state.description,
             category:this.state.category
         };
-
         axios({
-            // url: 'http://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
-            url: 'http://http://127.0.0.1:5000/api/v1/bucketlists/update/' + this.state.bucket_id,
-            method: "PUT",
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+            method: 'PUT',
             data: data,
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -77,8 +91,11 @@ class UpdateBucket extends Component{
             });
     }
 
-
     render(){
+        if (this.state.redirect){
+            return <Redirect to="/bucketlists/view"/>
+        }
+
         return (
             <div>
                 <Header/>
@@ -90,7 +107,7 @@ class UpdateBucket extends Component{
                         </h3>
                     </div>
 
-                    <form onSubmit={this.handleUpdate}>
+                    <form method="post" onSubmit={this.handleUpdate}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">
