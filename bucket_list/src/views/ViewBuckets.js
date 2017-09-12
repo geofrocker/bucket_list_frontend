@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
-import {BrowserRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class ViewBuckets extends Component{
@@ -10,14 +10,24 @@ class ViewBuckets extends Component{
     constructor(props){
         super(props);
         this.state = {isAuthorized: false, data:[]};
-        this.handleUpdate = this.handleUpdate.bind(this)
-    }
-
-    handleUpdate(){
-        console.log('awesome')
     }
 
     componentDidMount() {
+        axios({
+            url: 'http://127.0.0.1:5000/api/v1/callback',
+            method:"GET",
+            headers: {
+                'token': window.localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            }
+        }).then((response)=>{
+            this.setState({isAuthorized: true});
+            window.localStorage.setItem('isLoggedIn', true)
+        }).catch((xhr)=>{
+            this.setState({isAuthorized: false});
+            window.localStorage.setItem('isLoggedIn', false)
+        });
+
         axios({
             url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: "GET",

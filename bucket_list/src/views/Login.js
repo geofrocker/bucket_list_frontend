@@ -22,7 +22,6 @@ class Login extends Component{
     handleSubmit(event){
         event.preventDefault();
         axios({
-            // url : 'http://ridge-bucket-list-api.herokuapp.com/api/v1/auth/login',
             url: 'http://127.0.0.1:5000/api/v1/auth/login',
             data: {email: this.state.email, password: this.state.password},
             datatype: "json",
