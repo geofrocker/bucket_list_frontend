@@ -17,8 +17,7 @@ class Index extends Component{
                     <Route path="/register/" component={Register}/>
                     <Route path="/login/" component={Login}/>
                     <Route path="/bucketlists/create/" component={CreateBucket}/>
-                    <Route path="/bucketlists/view/" component={ViewBuckets}/>
-                    <Route path="/bucketlists/views/:bucket_id" component={ViewBucket}/>
+                    <Route path="/bucketlists/view/:bucket_id?" component={ViewBuckets}/>
                     <Route path="/bucketlists/update/:bucket_id" component={UpdateBucket} />
                 </Switch>
             </div>

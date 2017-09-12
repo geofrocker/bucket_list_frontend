@@ -30,7 +30,8 @@ class Login extends Component{
         })
             .then((response)=>{
                 console.log(JSON.stringify(response));
-                window.localStorage.setItem('token', response.data.token)
+                window.localStorage.setItem('token', response.data.token);
+                window.localStorage.setItem("isLoggedIn", true);
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
