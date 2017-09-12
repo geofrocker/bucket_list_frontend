@@ -69,13 +69,14 @@ class CreateBucket extends Component{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr));
                 alert(xhr.response.data.error);
+                window.localStorage.setItem('isLoggedIn', false)
         });
     }
 
     render(){
-        if (this.state.isAuthorized === false){
+        let isLoggedIn = window.localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn){
             return(
                 <div>
                     <article className="content item-editor-page">

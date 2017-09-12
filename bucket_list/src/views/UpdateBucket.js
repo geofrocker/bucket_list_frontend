@@ -15,19 +15,42 @@ class UpdateBucket extends Component{
     }
 
     handleUpdateName(event){
-        this.setState = {bucket_name: event.target.value}
+        this.setState({bucket_name: event.target.value})
     }
 
     handleUpdateDescription(event){
-        this.setState = {description: event.target.value}
+        this.setState({description: event.target.value})
 
     }
 
     handleUpdateCategory(event){
-        this.setState = {category: event.target.value}
+        this.setState ({category: event.target.value})
     }
 
-    handleUpdate(){
+    componentDidMount() {
+        axios({
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+            method: "GET",
+            headers: {
+                'token': window.localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response)=>{
+                let bucket_name = response.data.bucket.bucket_name;
+                let description = response.data.bucket.description;
+                let category = response.data.bucket.category;
+                this.setState ({bucket_name: bucket_name, description:description, category:category })
+            })
+            .catch((xhr) =>{
+                window.localStorage.setItem('isLoggedIn', false)
+
+            });
+    }
+
+    handleUpdate(event){
+        event.preventDefault();
+        console.log(this.bucket_name)
         let data = {
             bucket_name:this.state.bucket_name,
             description:this.state.description,
@@ -39,6 +62,10 @@ class UpdateBucket extends Component{
             url: 'http://http://127.0.0.1:5000/api/v1/bucketlists/update/' + this.state.bucket_id,
             method: "PUT",
             data: data,
+            headers: {
+                'token': window.localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+            },
             datatype: "json"
         })
             .then((response)=>{
@@ -63,7 +90,7 @@ class UpdateBucket extends Component{
                         </h3>
                     </div>
 
-                    <form name="item" method="post">
+                    <form onSubmit={this.handleUpdate}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">

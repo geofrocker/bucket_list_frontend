@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
+import {BrowserRouter, Link} from 'react-router-dom';
 
 
 class ViewBuckets extends Component{
@@ -9,11 +10,15 @@ class ViewBuckets extends Component{
     constructor(props){
         super(props);
         this.state = {isAuthorized: false, data:[]};
+        this.handleUpdate = this.handleUpdate.bind(this)
+    }
+
+    handleUpdate(){
+        console.log('awesome')
     }
 
     componentDidMount() {
         axios({
-            // url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
             url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: "GET",
             headers: {
@@ -23,22 +28,29 @@ class ViewBuckets extends Component{
         })
             .then((response)=>{
                 this.setState({data:response.data.buckets, isAuthorized: true});
-                console.log(this.state.isAuthorized);
 
             })
+            .catch((xhr) =>{
+                window.localStorage.setItem('isLoggedIn', false)
+
+            });
     }
+
+
     render(){
-        // if (this.state.isAuthorized === false){
-        //     return(
-        //         <div>
-        //             <article className="content item-editor-page">
-        //                 <div className="card card-block">
-        //                     <p>Unauthorized! Please log in</p>
-        //                 </div>
-        //             </article>
-        //         </div>
-        //     )
-        // }
+        let isLoggedIn = window.localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn){
+            return(
+                <div>
+                    <article className="content item-editor-page">
+                        <div className="card card-block">
+                            <p>Unauthorized! Please log in</p>
+                        </div>
+                    </article>
+                </div>
+            )
+        }
+         
         return(
             <div>
                 <Header/>
@@ -66,20 +78,24 @@ class ViewBuckets extends Component{
                                                         <th>Date Created</th>
                                                         <th>Activities</th>
                                                         <th>Activities</th>
-                                                        <th>Update</th>
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>{this.state.data.map(function(item, key){
                                                         return (
                                                             <tr key={key}>
-                                                                <td>{item.bucket_name}</td>
+                                                                <Link to={'/bucketlists/update/' + item.id}><td>{item.bucket_name}</td></Link>
                                                                 <td>{item.description}</td>
                                                                 <td>{item.created}</td>
-                                                                <td className="center"><button type="button"  className="btn btn-success-outline btn-sm">Add</button></td>
-                                                                <td className="center" ><button type="button" className="btn btn-success-outline btn-sm">View</button> </td>
-                                                                <td className="center" ><button type="button" className="btn btn-success-outline btn-sm">Update</button></td>
-                                                                <td className="center"><button type="button"  className="btn btn-danger-outline btn-sm">Delete</button></td>
+                                                                <td className="center">
+                                                                    <button type="button"  className="btn btn-success-outline btn-sm">Add</button>
+                                                                </td>
+                                                                <td className="center" >
+                                                                    <button type="button" className="btn btn-success-outline btn-sm">View</button>
+                                                                </td>
+                                                                <td className="center">
+                                                                    <button type="button"  className="btn btn-danger-outline btn-sm">Delete</button>
+                                                                </td>
                                                             </tr>
                                                         )
                                                     })}
