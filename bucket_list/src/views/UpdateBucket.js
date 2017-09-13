@@ -96,6 +96,18 @@ class UpdateBucket extends Component{
             return <Redirect to="/bucketlists/view"/>
         }
 
+        if (!this.state.isAuthorized){
+            return(
+                <div>
+                    <article className="content item-editor-page">
+                        <div className="card card-block">
+                            <p>Unauthorized! Please log in</p>
+                        </div>
+                    </article>
+                </div>
+            )
+        }
+
         return (
             <div>
                 <Header/>
