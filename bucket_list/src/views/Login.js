@@ -11,6 +11,7 @@ class Login extends Component{
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
+
     handleEmailChange(event){
         this.setState({email: event.target.value})
     }
