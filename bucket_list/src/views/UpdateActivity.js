@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import swal from 'sweetalert';
 
 class UpdateActivity extends Component{
     constructor(props){
@@ -75,7 +76,7 @@ class UpdateActivity extends Component{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal(xhr.response.data.error);
 
             });
 

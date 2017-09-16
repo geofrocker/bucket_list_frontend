@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios'
+import swal from 'sweetalert';
 
 class CreateActivity extends Component{
     constructor(props){
@@ -57,7 +58,7 @@ class CreateActivity extends Component{
             })
             .catch((xhr) =>{
                 console.log(JSON.stringify(xhr));
-                alert(xhr.response.data.error);
+                swal(xhr.response.data.error);
             });
     }
 

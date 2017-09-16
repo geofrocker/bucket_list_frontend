@@ -56,7 +56,7 @@ class Header extends React.Component{
                 </div>
                 <div className="header-block header-block-buttons">
                     <button className="btn btn-sm header-btn" type="button" onClick={this.handleLogout}>
-                        <i className="fa fa-github-alt"></i>
+                        <i className="fa fa-power-off "></i>
                         <span> Logout</span>
                     </button>
                 </div>

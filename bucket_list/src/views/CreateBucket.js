@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import {Redirect} from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import swal from 'sweetalert';
 
 class CreateBucket extends Component{
     constructor(props){
@@ -68,7 +69,7 @@ class CreateBucket extends Component{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal(xhr.response.data.error);
                 window.localStorage.setItem('isLoggedIn', false)
         });
     }

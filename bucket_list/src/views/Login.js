@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 class Login extends Component{
 
@@ -35,7 +36,7 @@ class Login extends Component{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, 'error');
 
             });
     }
