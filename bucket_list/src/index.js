@@ -6,7 +6,6 @@ import UpdateBucket from './views/UpdateBucket';
 import CreateActivity from './views/CreateActivity'
 import ViewActivities from './views/ViewActivities'
 import UpdateActivity from "./views/UpdateActivity";
-import DeleteActivity from './views/DeleteActivity';
 
 import Register from './views/Register';
 import Login from './views/Login';
@@ -26,7 +25,6 @@ class Index extends Component{
                     <Route path="/bucketlists/:bucket_id/items/create/" component={CreateActivity}/>
                     <Route path="/bucketlists/:bucket_id/items/view/" component={ViewActivities}/>
                     <Route path="/bucketlists/:bucket_id/items/update/:item_id" component={UpdateActivity}/>
-                    <Route path="/bucketlists/delete" component={DeleteActivity}/>
 
                 </Switch>
             </div>

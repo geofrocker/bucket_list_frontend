@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import  {Redirect, Link} from 'react-router-dom'
 
+
 class ViewActivities extends Component{
 
     constructor(props){
@@ -64,7 +65,9 @@ class ViewActivities extends Component{
                                 <div className="card">
                                     <div className="card-block">
                                         <div className="card-title-block">
-                                            <button type="button" onClick={this.handleClick} className="btn btn-primary-outline">Add New</button>
+                                            <button type="button" className="btn btn-primary-outline">
+                                                <Link to={"/bucketlists/" + this.state.bucket_id + "/items/create/"}>Add New</Link>
+                                            </button>
                                         </div>
 
                                     </div>

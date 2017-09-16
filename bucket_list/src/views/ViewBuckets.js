@@ -86,11 +86,14 @@ class ViewBuckets extends Component{
                                                                 <td>{item.description}</td>
                                                                 <td>{item.created}</td>
                                                                 <td className="center">
-                                                                    <Link to={'/bucketlists/' + item.id + '/items/create/'}><td>Add</td></Link>
+                                                                    <button type="button" className="btn btn-success-outline btn-sm">
+                                                                        <Link to={'/bucketlists/' + item.id + '/items/create/'}><td>Add</td></Link>
+                                                                    </button>
                                                                 </td>
                                                                 <td className="center" >
-                                                                    <Link to={'/bucketlists/' + item.id + '/items/view/'}><td>View</td></Link>
-
+                                                                    <button type="button" className="btn btn-success-outline btn-sm">
+                                                                        <Link to={'/bucketlists/' + item.id + '/items/view/'}><td>View</td></Link>
+                                                                    </button>
                                                                 </td>
                                                                 <td className="center">
                                                                     <button type="button"  className="btn btn-danger-outline btn-sm">Delete</button>
