@@ -61,7 +61,10 @@ class UpdateBucket extends Component{
                 this.setState ({bucket_name: bucket_name, description:description, category:category })
             })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr));
+                swal("Error", xhr.response.data.error, "error")
+                if (xhr.response.status == 404){
+                    this.setState({redirect:true})
+                }
 
             });
     }
@@ -87,7 +90,11 @@ class UpdateBucket extends Component{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
-                swal(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
+
+                if (xhr.response.status == 404){
+                    this.setState({redirect:true})
+                }
 
             });
     }
@@ -162,4 +169,5 @@ class UpdateBucket extends Component{
         )
     }
 }
+
 export default UpdateBucket;

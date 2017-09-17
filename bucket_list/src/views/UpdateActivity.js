@@ -51,7 +51,10 @@ class UpdateActivity extends Component{
                 this.setState ({description:description})
             })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr));
+                swal("Error!", xhr.response.data.error, "error");
+                if (xhr.response.status == 404){
+                    this.setState({redirect:true})
+                }
 
             });
     }
@@ -61,7 +64,7 @@ class UpdateActivity extends Component{
         let bucket_id = this.state.bucket_id;
         let item_id = this.state.item_id;
         let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
-        let data = {description: this.state.description}
+        let data = {description: this.state.description};
         axios({
             url: url,
             method: 'PUT',
@@ -76,7 +79,8 @@ class UpdateActivity extends Component{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
-                swal(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
+
 
             });
 
