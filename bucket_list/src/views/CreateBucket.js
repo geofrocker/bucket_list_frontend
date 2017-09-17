@@ -28,7 +28,7 @@ class CreateBucket extends Component{
                 this.setState({isAuthorized:true});
         })
             .catch((xhr) =>{
-                alert(xhr);
+                swal("Error!", xhr.response.data.error, "error");
             });
     }
 

@@ -58,7 +58,7 @@ class CreateActivity extends Component{
             })
             .catch((xhr) =>{
                 console.log(JSON.stringify(xhr));
-                swal(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
             });
     }
 
