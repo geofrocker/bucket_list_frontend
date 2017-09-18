@@ -44,7 +44,7 @@ class ViewActivities extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
                         </div>
                     </article>
                 </div>

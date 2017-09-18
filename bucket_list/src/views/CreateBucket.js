@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -80,7 +80,7 @@ class CreateBucket extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to="/login">login</Link></p>
                         </div>
                     </article>
                 </div>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import swal from 'sweetalert';
 
 class UpdateActivity extends Component{
@@ -96,7 +96,7 @@ class UpdateActivity extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
                         </div>
                     </article>
                 </div>
