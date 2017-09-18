@@ -95,8 +95,10 @@ class ViewBuckets extends Component{
                                                                         <Link to={'/bucketlists/' + item.id + '/items/view/'}><td>View</td></Link>
                                                                     </button>
                                                                 </td>
-                                                                <td className="center">
-                                                                    <button type="button"  className="btn btn-danger-outline btn-sm">Delete</button>
+                                                                <td className="center" >
+                                                                    <button type="button" className="btn btn-danger-outline btn-sm">
+                                                                        <Link to={'/bucketlists/delete/' + item.id}><td>Delete</td></Link>
+                                                                    </button>
                                                                 </td>
                                                             </tr>
                                                         )

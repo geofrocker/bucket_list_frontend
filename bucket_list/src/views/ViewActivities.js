@@ -91,9 +91,10 @@ class ViewActivities extends Component{
                                                             <td className="center" >
                                                                 <Link to={'/bucketlists/' + item.bucket_id + '/items/update/' + item.activity_id}><td>Update</td></Link>
                                                             </td>
-                                                            <td className="center">
-                                                                <button type="button"  className="btn btn-danger-outline btn-sm">Delete</button>
-
+                                                            <td className="center" >
+                                                                <button type="button" className="btn btn-danger-outline btn-sm">
+                                                                    <Link to={'/bucketlists/' + item.bucket_id + '/items/delete/' + item.activity_id}><td>Delete</td></Link>
+                                                                </button>
                                                             </td>
                                                         </tr>
                                                     )

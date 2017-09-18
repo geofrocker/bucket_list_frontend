@@ -9,8 +9,10 @@ class Header extends React.Component{
         super(props);
         let token = window.localStorage.getItem('token');
         let isLoggedIn=  window.localStorage.getItem('isLoggedIn');
-        this.state = {token:token, isLoggedIn:isLoggedIn};
+        this.state = {token:token, isLoggedIn:isLoggedIn, q:'', data:[]};
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearchData = this.handleSearchData.bind(this);
     }
 
     handleLogout(event){
@@ -25,7 +27,7 @@ class Header extends React.Component{
             datatype: "json"
 
         }).then((response) => {
-            console.log(JSON.stringify(response))
+            console.log(JSON.stringify(response));
             this.setState({isLoggedIn:false, redirect:true});
             window.localStorage.removeItem('token');
             window.localStorage.removeItem('isLoggedIn')
@@ -33,6 +35,13 @@ class Header extends React.Component{
         })
     }
 
+    handleSearchData(event){
+        this.setState({q: event.target.value});
+    }
+
+    handleSearch(event){
+
+    }
 
     render(){
         if (this.state.redirect){
@@ -50,10 +59,19 @@ class Header extends React.Component{
 
                 <div className="header-block header-block-buttons">
                     <a href="https://github.com/ridgekimani/bucket_list_frontend" className="btn btn-sm header-btn">
-                        <i className="fa fa-github-alt"></i>
                         <span> View on GitHub</span>
                     </a>
                 </div>
+
+
+                <div className="header-block header-block-buttons">
+                    <label>Search .</label>
+                    <input type="text" name="q" value={this.state.q} onChange={this.handleSearchData}/>
+                    <button className="btn btn-sm header-btn" type="button" onClick={this.handleSearch}>
+                        <span> Search</span>
+                    </button>
+                </div>
+
                 <div className="header-block header-block-buttons">
                     <button className="btn btn-sm header-btn" type="button" onClick={this.handleLogout}>
                         <i className="fa fa-power-off "></i>
