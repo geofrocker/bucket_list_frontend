@@ -9,7 +9,7 @@ class Header extends React.Component{
         super(props);
         let token = window.localStorage.getItem('token');
         let isLoggedIn=  window.localStorage.getItem('isLoggedIn');
-        this.state = {token:token, isLoggedIn:isLoggedIn, q:'', data:[]};
+        this.state = {token:token, isLoggedIn:isLoggedIn, q:'', data:[], search:false};
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSearchData = this.handleSearchData.bind(this);
@@ -40,13 +40,19 @@ class Header extends React.Component{
     }
 
     handleSearch(event){
-
+        event.preventDefault()
+        this.setState({search:true})
     }
 
     render(){
         if (this.state.redirect){
             return(
                 <Redirect to={'/login/'}/>
+            )
+        }
+        if (this.state.search){
+            return(
+                <Redirect to={"/search?q=" + this.state.q}/>
             )
         }
         return (
