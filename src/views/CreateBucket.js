@@ -78,9 +78,7 @@ class CreateBucket extends Component{
             return(
                 <div>
                     <article className="content item-editor-page">
-                        <div className="card card-block">
-                            <p>Unauthorized! Please <Link to="/login">login</Link></p>
-                        </div>
+
                     </article>
                 </div>
             )
