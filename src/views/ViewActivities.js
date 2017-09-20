@@ -73,7 +73,7 @@ class ViewActivities extends Component{
                                     </div>
                                     <section className="example">
                                         <div className="table-flip-scroll">
-                                            <table className="table table-striped table-bordered table-hover flip-content">
+                                            <table id="activities_table" className="table table-striped table-bordered table-hover flip-content">
                                                 <thead className="flip-header">
                                                 <tr>
                                                     <th>Description</th>

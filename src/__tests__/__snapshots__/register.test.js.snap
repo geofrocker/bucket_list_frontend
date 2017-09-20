@@ -12,7 +12,7 @@ exports[`<Register /> contains signup form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "fvouve",
+            "key": "yhytej",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<Register /> contains signup form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "fvouve",
+          "key": "yhytej",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -169,7 +169,7 @@ exports[`<Register /> should change the values to the email input in the form 1`
         "entries": Array [
           Object {
             "hash": "",
-            "key": "8p6jh9",
+            "key": "7qcp99",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -183,7 +183,7 @@ exports[`<Register /> should change the values to the email input in the form 1`
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "8p6jh9",
+          "key": "7qcp99",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -326,7 +326,7 @@ exports[`<Register /> should change the values to the password input 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "cph27m",
+            "key": "pi16ti",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -340,7 +340,7 @@ exports[`<Register /> should change the values to the password input 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "cph27m",
+          "key": "pi16ti",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -483,7 +483,7 @@ exports[`<Register /> should change the values to the password input in the form
         "entries": Array [
           Object {
             "hash": "",
-            "key": "1588q1",
+            "key": "efo4hs",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -497,7 +497,7 @@ exports[`<Register /> should change the values to the password input in the form
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "1588q1",
+          "key": "efo4hs",
           "pathname": "/",
           "search": "",
           "state": undefined,

@@ -12,7 +12,7 @@ exports[`<Login /> contains form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "zbh6ik",
+            "key": "r3af08",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<Login /> contains form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "zbh6ik",
+          "key": "r3af08",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -153,7 +153,7 @@ exports[`<Login /> should change the values to the email input 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "0sapct",
+            "key": "0n4o16",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -167,7 +167,7 @@ exports[`<Login /> should change the values to the email input 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "0sapct",
+          "key": "0n4o16",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -294,7 +294,7 @@ exports[`<Login /> should change the values to the password input 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "pgtqtn",
+            "key": "zvit3h",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -308,7 +308,7 @@ exports[`<Login /> should change the values to the password input 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "pgtqtn",
+          "key": "zvit3h",
           "pathname": "/",
           "search": "",
           "state": undefined,
