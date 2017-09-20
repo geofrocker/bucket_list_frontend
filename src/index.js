@@ -31,6 +31,7 @@ class Index extends Component{
                     <Route path="/bucketlists/:bucket_id/items/update/:item_id" component={UpdateActivity}/>
                     <Route path="/bucketlists/:bucket_id/items/delete/:item_id" component={DeleteActivity}/>
                     <Route path="/search/" component={SearchData}/>
+                    <Route path={"/"} component={Login}/>
                 </Switch>
             </div>
         )

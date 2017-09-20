@@ -12,7 +12,7 @@ exports[`<UpdateBucket /> contains update activity form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "7iirf8",
+            "key": "mipru8",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<UpdateBucket /> contains update activity form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "7iirf8",
+          "key": "mipru8",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -48,26 +48,7 @@ exports[`<UpdateBucket /> contains update activity form 1`] = `
       <div>
         <article
           className="content item-editor-page"
-        >
-          <div
-            className="card card-block"
-          >
-            <p>
-              Unauthorized! Please 
-              <Link
-                replace={false}
-                to="/login/"
-              >
-                <a
-                  href="/login/"
-                  onClick={[Function]}
-                >
-                  Login
-                </a>
-              </Link>
-            </p>
-          </div>
-        </article>
+        />
       </div>
     </UpdateActivity>
   </Router>
@@ -86,7 +67,7 @@ exports[`<UpdateBucket /> should change values in the form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "q1o5vh",
+            "key": "zawlli",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -100,7 +81,7 @@ exports[`<UpdateBucket /> should change values in the form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "q1o5vh",
+          "key": "zawlli",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -123,26 +104,7 @@ exports[`<UpdateBucket /> should change values in the form 1`] = `
       <div>
         <article
           className="content item-editor-page"
-        >
-          <div
-            className="card card-block"
-          >
-            <p>
-              Unauthorized! Please 
-              <Link
-                replace={false}
-                to="/login/"
-              >
-                <a
-                  href="/login/"
-                  onClick={[Function]}
-                >
-                  Login
-                </a>
-              </Link>
-            </p>
-          </div>
-        </article>
+        />
       </div>
     </UpdateActivity>
   </Router>

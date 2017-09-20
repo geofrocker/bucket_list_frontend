@@ -12,7 +12,7 @@ exports[`<CreateActivity /> contains create activity form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "2zw378",
+            "key": "j30v89",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<CreateActivity /> contains create activity form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "2zw378",
+          "key": "j30v89",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -48,26 +48,7 @@ exports[`<CreateActivity /> contains create activity form 1`] = `
       <div>
         <article
           className="content item-editor-page"
-        >
-          <div
-            className="card card-block"
-          >
-            <p>
-              Unauthorized! Please 
-              <Link
-                replace={false}
-                to="/login/"
-              >
-                <a
-                  href="/login/"
-                  onClick={[Function]}
-                >
-                  Login
-                </a>
-              </Link>
-            </p>
-          </div>
-        </article>
+        />
       </div>
     </CreateActivity>
   </Router>
@@ -86,7 +67,7 @@ exports[`<CreateActivity /> should change values in the form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "hwet3z",
+            "key": "9o5m8o",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -100,7 +81,7 @@ exports[`<CreateActivity /> should change values in the form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "hwet3z",
+          "key": "9o5m8o",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -122,26 +103,7 @@ exports[`<CreateActivity /> should change values in the form 1`] = `
       <div>
         <article
           className="content item-editor-page"
-        >
-          <div
-            className="card card-block"
-          >
-            <p>
-              Unauthorized! Please 
-              <Link
-                replace={false}
-                to="/login/"
-              >
-                <a
-                  href="/login/"
-                  onClick={[Function]}
-                >
-                  Login
-                </a>
-              </Link>
-            </p>
-          </div>
-        </article>
+        />
       </div>
     </CreateActivity>
   </Router>
