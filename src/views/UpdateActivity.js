@@ -115,7 +115,7 @@ class UpdateActivity extends Component{
                         </h3>
                     </div>
 
-                    <form method="post" onSubmit={this.handleUpdateData}>
+                    <form method="post" id="update_activity_form" onSubmit={this.handleUpdateData}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">
