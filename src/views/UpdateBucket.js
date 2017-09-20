@@ -127,7 +127,7 @@ class UpdateBucket extends Component{
                         </h3>
                     </div>
 
-                    <form method="post" onSubmit={this.handleUpdate}>
+                    <form method="post" id="update_bucket_form" onSubmit={this.handleUpdate}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">
