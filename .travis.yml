@@ -7,3 +7,6 @@ install:
 
 script:
   - npm test -- -u
+
+after_success:
+  - coveralls
