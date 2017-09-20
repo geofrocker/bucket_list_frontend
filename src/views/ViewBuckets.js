@@ -19,7 +19,7 @@ class ViewBuckets extends Component{
 
     componentDidMount() {
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
