@@ -5,10 +5,18 @@
   "dependencies": {
     "auth0-js": "^8.9.3",
     "axios": "^0.16.2",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-register": "^6.26.0",
     "bootstrap": "^4.0.0-alpha.6",
     "bower": "^1.8.2",
     "enzyme-to-json": "^2.0.0",
+    "isparta": "^4.0.0",
+    "jest-cli": "^21.1.0",
+    "jsdom": "^11.2.0",
+    "jsdom-global": "^3.0.2",
     "jwt-decode": "^2.2.0",
+    "mocha": "^3.5.3",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -26,6 +34,9 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "devDependencies": {
     "babel-jest": "^21.0.2",

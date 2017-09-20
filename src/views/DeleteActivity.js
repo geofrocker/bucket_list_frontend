@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -16,7 +16,7 @@ class DeleteActivity extends Component {
     }
 
     componentDidMount() {
-        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
         axios({
             url: url,
             method: "GET",
@@ -25,12 +25,12 @@ class DeleteActivity extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then((response) => {
+            .then(() => {
                 this.confirmDelete()
             })
             .catch((xhr) => {
                 swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status == 404) {
+                if (xhr.response.status === 404) {
                     this.setState({redirect: true})
                 }
 
@@ -38,7 +38,7 @@ class DeleteActivity extends Component {
     }
 
     confirmDelete(){
-        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
 
         swal({
             title: "Are you sure?",
@@ -62,7 +62,7 @@ class DeleteActivity extends Component {
                             'token': window.localStorage.getItem('token'),
                             'Content-Type': 'application/json'
                         }
-                    }).then((response)=>{
+                    }).then(()=>{
                         swal("Success!", "Item deleted successfully", "success");
                         this.setState({redirect:true})
                     })
@@ -72,7 +72,7 @@ class DeleteActivity extends Component {
 
             .catch((xhr) => {
                 swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status == 404) {
+                if (xhr.response.status === 404) {
                     this.setState({redirect: true})
                 }
             })

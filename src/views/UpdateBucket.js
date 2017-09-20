@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -32,22 +32,22 @@ class UpdateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
+            url: 'http://127.0.0.1:5000/api/v1/callback',
             method:"GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
-        }).then((response)=>{
+        }).then(()=>{
             this.setState({isAuthorized: true});
             window.localStorage.setItem('isLoggedIn', true)
-        }).catch((xhr)=>{
+        }).catch(()=>{
             this.setState({isAuthorized: false});
             window.localStorage.setItem('isLoggedIn', false)
         });
 
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -62,7 +62,7 @@ class UpdateBucket extends Component{
             })
             .catch((xhr) =>{
                 swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status == 404){
+                if (xhr.response.status === 404){
                     this.setState({redirect:true})
                 }
 
@@ -77,7 +77,7 @@ class UpdateBucket extends Component{
             category:this.state.category
         };
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: 'PUT',
             data: data,
             headers: {
@@ -86,13 +86,13 @@ class UpdateBucket extends Component{
             },
             datatype: "json"
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
                 swal("Error!", xhr.response.data.error, "error");
 
-                if (xhr.response.status == 404){
+                if (xhr.response.status === 404){
                     this.setState({redirect:true})
                 }
 
@@ -100,6 +100,10 @@ class UpdateBucket extends Component{
     }
 
     render(){
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (this.state.redirect){
             return <Redirect to="/bucketlists/view"/>
         }
@@ -108,9 +112,7 @@ class UpdateBucket extends Component{
             return(
                 <div>
                     <article className="content item-editor-page">
-                        <div className="card card-block">
-                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
-                        </div>
+
                     </article>
                 </div>
             )

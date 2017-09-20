@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios'
 import swal from 'sweetalert';
 
@@ -9,25 +9,25 @@ class CreateActivity extends Component{
     constructor(props){
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
-        this.state = {description:'', token: '',isAuthorized:false, bucket_id:bucket_id};
+        this.state = {description:'', token: '',isAuthorized:false, bucket_id:bucket_id, redirect: false, login_redirect:false};
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({isAuthorized:true});
             })
-            .catch((xhr) =>{
-                console.log(JSON.stringify(xhr))
+            .catch(() =>{
+                this.setState({redirect:true})
             });
     }
 
@@ -42,7 +42,7 @@ class CreateActivity extends Component{
         };
 
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/'+ this.state.bucket_id + '/items',
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/'+ this.state.bucket_id + '/items',
             method: 'POST',
             datatype: "json",
             data: data,
@@ -52,23 +52,24 @@ class CreateActivity extends Component{
             }
 
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr));
                 swal("Error!", xhr.response.data.error, "error");
             });
     }
 
     render(){
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">
-                        <div className="card card-block">
-                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
-                        </div>
+
                     </article>
                 </div>
             )
@@ -94,7 +95,7 @@ class CreateActivity extends Component{
                             <div className="card card-block">
                                 <div className="form-group row">
                                     <label className="col-sm-2 form-control-label text-xs-right">
-                                        Name:
+                                        Description:
                                     </label>
 
                                     <div className="col-sm-10">

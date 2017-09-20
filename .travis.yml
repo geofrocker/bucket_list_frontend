@@ -3,7 +3,11 @@ node_js:
   - "stable"
 
 install:
+  - npm install jest-cli
   - npm install
 
 script:
   - npm test -- -u
+
+after_success:
+  - jest --coverage -u

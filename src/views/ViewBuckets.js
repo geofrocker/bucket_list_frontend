@@ -2,24 +2,19 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 
 class ViewBuckets extends Component{
 
     constructor(props){
         super(props);
-        this.state = {isAuthorized: false, data:[]};
-        this.handleUpdate = this.handleUpdate.bind(this)
-    }
-
-    handleUpdate(){
-        console.log('awesome')
+        this.state = {isAuthorized: false, data:[], login_redirect:false};
     }
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -28,24 +23,33 @@ class ViewBuckets extends Component{
         })
             .then((response)=>{
                 this.setState({data:response.data.buckets, isAuthorized: true});
-
             })
+
             .catch((xhr) =>{
-                window.localStorage.setItem('isLoggedIn', false)
+                this.setState({login_redirect:true})
 
             });
     }
 
     render(){
-        if (!this.state.isAuthorized){
+        if(this.state.login_redirect){
+            return(
+                <Redirect to={'/login/'}/>
+            )
+        }
+
+        else if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">
-                        <div className="card card-block">
-                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
-                        </div>
+
                     </article>
                 </div>
+            )
+        }
+        if(this.state.login_redirect){
+            return(
+                <Redirect to={'/login/'}/>
             )
         }
 

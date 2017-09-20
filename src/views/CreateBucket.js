@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 class CreateBucket extends Component{
     constructor(props){
         super(props);
-        this.state = {bucket_name:'', description:'', category:'', token: '',isAuthorized:false};
+        this.state = {bucket_name:'', description:'', category:'', token: '',isAuthorized:false, login_redirect:false};
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
@@ -17,18 +17,18 @@ class CreateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
+            url: 'http://127.0.0.1:5000/api/v1/callback',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({isAuthorized:true});
         })
-            .catch((xhr) =>{
-                swal("Error!", xhr.response.data.error, "error");
+            .catch(() =>{
+                this.setState({login_redirect:true});
             });
     }
 
@@ -54,7 +54,7 @@ class CreateBucket extends Component{
         };
         
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
             method: 'POST',
             datatype: "json",
             data: data,
@@ -64,23 +64,26 @@ class CreateBucket extends Component{
             }
             
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                swal(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
                 window.localStorage.setItem('isLoggedIn', false)
         });
     }
 
     render(){
+
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">
-                        <div className="card card-block">
-                            <p>Unauthorized! Please <Link to="/login">login</Link></p>
-                        </div>
+
                     </article>
                 </div>
             )
