@@ -12,6 +12,7 @@
     "bower": "^1.8.2",
     "enzyme-to-json": "^2.0.0",
     "isparta": "^4.0.0",
+    "jest-cli": "^21.1.0",
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
     "jwt-decode": "^2.2.0",
