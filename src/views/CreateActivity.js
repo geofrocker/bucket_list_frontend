@@ -16,7 +16,7 @@ class CreateActivity extends Component{
 
     componentDidMount() {
         axios({
-            url: 'http://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -42,7 +42,7 @@ class CreateActivity extends Component{
         };
 
         axios({
-            url: 'http://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/'+ this.state.bucket_id + '/items',
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/'+ this.state.bucket_id + '/items',
             method: 'POST',
             datatype: "json",
             data: data,

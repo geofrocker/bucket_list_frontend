@@ -32,7 +32,7 @@ class UpdateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/callback',
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
             method:"GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -47,7 +47,7 @@ class UpdateBucket extends Component{
         });
 
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -61,7 +61,7 @@ class UpdateBucket extends Component{
                 this.setState ({bucket_name: bucket_name, description:description, category:category })
             })
             .catch((xhr) =>{
-                swal("Error", xhr.response.data.error, "error")
+                swal("Error", xhr.response.data.error, "error");
                 if (xhr.response.status == 404){
                     this.setState({redirect:true})
                 }
@@ -77,7 +77,7 @@ class UpdateBucket extends Component{
             category:this.state.category
         };
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
             method: 'PUT',
             data: data,
             headers: {
