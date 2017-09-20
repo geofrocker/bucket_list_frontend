@@ -16,7 +16,7 @@ class DeleteBucket extends Component {
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -30,7 +30,7 @@ class DeleteBucket extends Component {
             })
             .catch((xhr) => {
                 swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status == 404) {
+                if (xhr.response.status === 404) {
                     this.setState({redirect: true})
                 }
 
@@ -54,7 +54,7 @@ class DeleteBucket extends Component {
                 }
                 else{
                     axios({
-                        url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+                        url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
                         method: "DELETE",
                         headers: {
                             'token': window.localStorage.getItem('token'),
@@ -70,7 +70,7 @@ class DeleteBucket extends Component {
 
                 .catch((xhr) => {
                     swal("Error", xhr.response.data.error, "error");
-                    if (xhr.response.status == 404) {
+                    if (xhr.response.status === 404) {
                         this.setState({redirect: true})
                     }
                 })

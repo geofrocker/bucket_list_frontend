@@ -10,7 +10,7 @@ class ViewActivities extends Component{
     constructor(props){
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
-        this.state = {description: '', date_created: '', updated: '', isAuthenticated:false, data:[], bucket_id:bucket_id};
+        this.state = {description: '', date_created: '', updated: '', isAuthenticated:false, data:[], bucket_id:bucket_id, login_redirect:false};
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -21,7 +21,7 @@ class ViewActivities extends Component{
     
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id + '/items',
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id + '/items',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -34,12 +34,18 @@ class ViewActivities extends Component{
 
             })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr))
+                this.setState({login_redirect:true})
             });
     }
 
     render(){
-        if (!this.state.isAuthorized){
+        if(this.state.login_redirect){
+            return(
+                <Redirect to={'/login/'}/>
+            )
+        }
+
+        else if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">

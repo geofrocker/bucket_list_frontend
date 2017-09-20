@@ -11,19 +11,17 @@ class SearchData extends Component {
     constructor(props) {
         super(props);
         let query = this.props.location.search;
-        for (var value in parse(query)){
-            this.state = {q:parse(query)[value]}
-        }
-        if (!this.state.q){
-            swal("Error!", "Please enter the search data", "error");
-            <Redirect to={"bucketlists/view"}></Redirect>
-
+        for (let value in parse(query)){
+            this.state = {q:parse(query)[value], login_redirect:false, redirect:false}
         }
     }
 
     componentDidMount() {
+        if ((this.state.q).length === 0){
+            this.setState({redirect:true})
+        }
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/search?q=' +this.state.q,
+            url: 'http://127.0.0.1:5000/api/v1/search?q=' +this.state.q,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -35,10 +33,15 @@ class SearchData extends Component {
 
             })
             .catch((xhr) => {
-                console.log(JSON.stringify(xhr))
+                this.setState({login_redirect:true})
             });
     }
     render(){
+
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (!this.state.isAuthorized){
             return(
                 <div>

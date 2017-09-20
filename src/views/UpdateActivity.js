@@ -21,7 +21,7 @@ class UpdateActivity extends Component{
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
+            url: 'http://127.0.0.1:5000/api/v1/callback',
             method:"GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -31,11 +31,10 @@ class UpdateActivity extends Component{
             this.setState({isAuthorized: true});
             window.localStorage.setItem('isLoggedIn', true)
         }).catch((xhr)=>{
-            this.setState({isAuthorized: false});
-            window.localStorage.setItem('isLoggedIn', false)
+            this.setState({isAuthorized: false, login_redirect:true});
         });
 
-        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
 
         axios({
 
@@ -52,7 +51,7 @@ class UpdateActivity extends Component{
             })
             .catch((xhr) =>{
                 swal("Error!", xhr.response.data.error, "error");
-                if (xhr.response.status == 404){
+                if (xhr.response.status === 404){
                     this.setState({redirect:true})
                 }
 
@@ -63,7 +62,7 @@ class UpdateActivity extends Component{
         event.preventDefault();
         let bucket_id = this.state.bucket_id;
         let item_id = this.state.item_id;
-        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
         let data = {description: this.state.description};
         axios({
             url: url,
@@ -87,6 +86,10 @@ class UpdateActivity extends Component{
     }
 
     render(){
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (this.state.redirect){
             return <Redirect to={"/bucketlists/" + this.state.bucket_id + "/items/view/"}/>
         }

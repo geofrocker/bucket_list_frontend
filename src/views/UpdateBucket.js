@@ -32,7 +32,7 @@ class UpdateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
+            url: 'http://127.0.0.1:5000/api/v1/callback',
             method:"GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -47,7 +47,7 @@ class UpdateBucket extends Component{
         });
 
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -62,7 +62,7 @@ class UpdateBucket extends Component{
             })
             .catch((xhr) =>{
                 swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status == 404){
+                if (xhr.response.status === 404){
                     this.setState({redirect:true})
                 }
 
@@ -77,7 +77,7 @@ class UpdateBucket extends Component{
             category:this.state.category
         };
         axios({
-            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/' + this.state.bucket_id,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: 'PUT',
             data: data,
             headers: {
@@ -92,7 +92,7 @@ class UpdateBucket extends Component{
             .catch((xhr) =>{
                 swal("Error!", xhr.response.data.error, "error");
 
-                if (xhr.response.status == 404){
+                if (xhr.response.status === 404){
                     this.setState({redirect:true})
                 }
 
@@ -100,6 +100,10 @@ class UpdateBucket extends Component{
     }
 
     render(){
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
         if (this.state.redirect){
             return <Redirect to="/bucketlists/view"/>
         }
