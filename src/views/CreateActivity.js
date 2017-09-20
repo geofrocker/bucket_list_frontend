@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios'
 import swal from 'sweetalert';
 
@@ -23,10 +23,10 @@ class CreateActivity extends Component{
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({isAuthorized:true});
             })
-            .catch((xhr) =>{
+            .catch(() =>{
                 this.setState({redirect:true})
             });
     }
@@ -52,7 +52,7 @@ class CreateActivity extends Component{
             }
 
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{

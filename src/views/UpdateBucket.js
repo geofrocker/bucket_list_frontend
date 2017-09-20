@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -38,10 +38,10 @@ class UpdateBucket extends Component{
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
-        }).then((response)=>{
+        }).then(()=>{
             this.setState({isAuthorized: true});
             window.localStorage.setItem('isLoggedIn', true)
-        }).catch((xhr)=>{
+        }).catch(()=>{
             this.setState({isAuthorized: false});
             window.localStorage.setItem('isLoggedIn', false)
         });
@@ -86,7 +86,7 @@ class UpdateBucket extends Component{
             },
             datatype: "json"
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{

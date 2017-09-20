@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -24,10 +24,10 @@ class CreateBucket extends Component{
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({isAuthorized:true});
         })
-            .catch((xhr) =>{
+            .catch(() =>{
                 this.setState({login_redirect:true});
             });
     }
@@ -64,7 +64,7 @@ class CreateBucket extends Component{
             }
             
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{

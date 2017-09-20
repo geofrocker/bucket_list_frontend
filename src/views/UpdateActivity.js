@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import swal from 'sweetalert';
 
 class UpdateActivity extends Component{
@@ -27,10 +27,10 @@ class UpdateActivity extends Component{
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
-        }).then((response)=>{
+        }).then(()=>{
             this.setState({isAuthorized: true});
             window.localStorage.setItem('isLoggedIn', true)
-        }).catch((xhr)=>{
+        }).catch(()=>{
             this.setState({isAuthorized: false, login_redirect:true});
         });
 
@@ -62,7 +62,7 @@ class UpdateActivity extends Component{
         event.preventDefault();
         let bucket_id = this.state.bucket_id;
         let item_id = this.state.item_id;
-        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + bucket_id + "/items/" + item_id;
         let data = {description: this.state.description};
         axios({
             url: url,
@@ -74,7 +74,7 @@ class UpdateActivity extends Component{
                 'Content-Type': 'application/json'
             },
         })
-            .then((response)=>{
+            .then(()=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{

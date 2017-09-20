@@ -4,7 +4,6 @@ import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {parse}  from 'querystring'
-import swal from 'sweetalert'
 
 class SearchData extends Component {
 
@@ -32,7 +31,7 @@ class SearchData extends Component {
                 this.setState({activities: response.data.activities, buckets:response.data.buckets, isAuthorized: true});
 
             })
-            .catch((xhr) => {
+            .catch(() => {
                 this.setState({login_redirect:true})
             });
     }

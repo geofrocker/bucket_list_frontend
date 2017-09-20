@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -25,7 +25,7 @@ class DeleteActivity extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then((response) => {
+            .then(() => {
                 this.confirmDelete()
             })
             .catch((xhr) => {
@@ -62,7 +62,7 @@ class DeleteActivity extends Component {
                             'token': window.localStorage.getItem('token'),
                             'Content-Type': 'application/json'
                         }
-                    }).then((response)=>{
+                    }).then(()=>{
                         swal("Success!", "Item deleted successfully", "success");
                         this.setState({redirect:true})
                     })
