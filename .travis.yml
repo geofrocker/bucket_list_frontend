@@ -10,4 +10,4 @@ script:
   - npm test -- -u
 
 after_success:
-  - jest --coverage
+  - jest --coverage -u
