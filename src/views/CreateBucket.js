@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect} from 'react-router-dom';
-import axios from 'axios'
+import {Redirect, Link} from 'react-router-dom';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 class CreateBucket extends Component{
     constructor(props){
@@ -27,7 +28,7 @@ class CreateBucket extends Component{
                 this.setState({isAuthorized:true});
         })
             .catch((xhr) =>{
-                alert(xhr);
+                swal("Error!", xhr.response.data.error, "error");
             });
     }
 
@@ -68,7 +69,7 @@ class CreateBucket extends Component{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal(xhr.response.data.error);
                 window.localStorage.setItem('isLoggedIn', false)
         });
     }
@@ -79,7 +80,7 @@ class CreateBucket extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to="/login">login</Link></p>
                         </div>
                     </article>
                 </div>
@@ -99,7 +100,7 @@ class CreateBucket extends Component{
                         </h3>
                     </div>
 
-                    <form method="post" onSubmit={this.handleSubmit}>
+                    <form method="post" id="create_bucket_form" onSubmit={this.handleSubmit}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">

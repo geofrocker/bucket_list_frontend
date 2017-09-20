@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import  {Redirect, Link} from 'react-router-dom'
 
+
 class ViewActivities extends Component{
 
     constructor(props){
@@ -43,7 +44,7 @@ class ViewActivities extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
                         </div>
                     </article>
                 </div>
@@ -64,13 +65,15 @@ class ViewActivities extends Component{
                                 <div className="card">
                                     <div className="card-block">
                                         <div className="card-title-block">
-                                            <button type="button" onClick={this.handleClick} className="btn btn-primary-outline">Add New</button>
+                                            <button type="button" className="btn btn-primary-outline">
+                                                <Link to={"/bucketlists/" + this.state.bucket_id + "/items/create/"}>Add New</Link>
+                                            </button>
                                         </div>
 
                                     </div>
                                     <section className="example">
                                         <div className="table-flip-scroll">
-                                            <table className="table table-striped table-bordered table-hover flip-content">
+                                            <table id="activities_table" className="table table-striped table-bordered table-hover flip-content">
                                                 <thead className="flip-header">
                                                 <tr>
                                                     <th>Description</th>
@@ -88,9 +91,10 @@ class ViewActivities extends Component{
                                                             <td className="center" >
                                                                 <Link to={'/bucketlists/' + item.bucket_id + '/items/update/' + item.activity_id}><td>Update</td></Link>
                                                             </td>
-                                                            <td className="center">
-                                                                <button type="button"  className="btn btn-danger-outline btn-sm">Delete</button>
-
+                                                            <td className="center" >
+                                                                <button type="button" className="btn btn-danger-outline btn-sm">
+                                                                    <Link to={'/bucketlists/' + item.bucket_id + '/items/delete/' + item.activity_id}><td>Delete</td></Link>
+                                                                </button>
                                                             </td>
                                                         </tr>
                                                     )

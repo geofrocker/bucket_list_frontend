@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import axios from 'axios'
+import swal from 'sweetalert';
 
 class CreateActivity extends Component{
     constructor(props){
@@ -57,7 +58,7 @@ class CreateActivity extends Component{
             })
             .catch((xhr) =>{
                 console.log(JSON.stringify(xhr));
-                alert(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
             });
     }
 
@@ -67,7 +68,7 @@ class CreateActivity extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
                         </div>
                     </article>
                 </div>
@@ -90,7 +91,7 @@ class CreateActivity extends Component{
                             </h3>
                         </div>
 
-                        <form method="post" onSubmit={this.handleSubmit}>
+                        <form method="post" id="create_activity_form" onSubmit={this.handleSubmit}>
                             <div className="card card-block">
                                 <div className="form-group row">
                                     <label className="col-sm-2 form-control-label text-xs-right">

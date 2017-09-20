@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UpdateBucket /> contains  update bucket form 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "wnzb2y",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "wnzb2y",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <UpdateBucket
+      match={
+        Object {
+          "params": Object {
+            "bucket_id": 1,
+          },
+        }
+      }
+    >
+      <div>
+        <article
+          className="content item-editor-page"
+        >
+          <div
+            className="card card-block"
+          >
+            <p>
+              Unauthorized! Please 
+              <Link
+                replace={false}
+                to="/login/"
+              >
+                <a
+                  href="/login/"
+                  onClick={[Function]}
+                >
+                  Login
+                </a>
+              </Link>
+            </p>
+          </div>
+        </article>
+      </div>
+    </UpdateBucket>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`<UpdateBucket /> should change values in the form 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "nllbiw",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "nllbiw",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <UpdateBucket
+      match={
+        Object {
+          "params": Object {
+            "bucket_id": 1,
+          },
+        }
+      }
+    >
+      <div>
+        <article
+          className="content item-editor-page"
+        >
+          <div
+            className="card card-block"
+          >
+            <p>
+              Unauthorized! Please 
+              <Link
+                replace={false}
+                to="/login/"
+              >
+                <a
+                  href="/login/"
+                  onClick={[Function]}
+                >
+                  Login
+                </a>
+              </Link>
+            </p>
+          </div>
+        </article>
+      </div>
+    </UpdateBucket>
+  </Router>
+</MemoryRouter>
+`;

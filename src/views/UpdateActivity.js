@@ -1,32 +1,22 @@
 import React, {Component} from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import {Redirect, Link} from 'react-router-dom';
+import swal from 'sweetalert';
 
-class UpdateBucket extends Component{
-
+class UpdateActivity extends Component{
     constructor(props){
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
-        this.state = {bucket_name: '', description: '', category: '', bucket_id:bucket_id, isAuthorized:false};
-        this.handleUpdateName = this.handleUpdateName.bind(this);
-        this.handleUpdateDescription = this.handleUpdateDescription.bind(this);
-        this.handleUpdateCategory = this.handleUpdateCategory.bind(this);
-        this.handleUpdate = this.handleUpdate.bind(this);
+        let item_id = this.props.match.params.item_id;
+        this.state = {description: '', bucket_id: bucket_id, item_id:item_id};
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleUpdateData = this.handleUpdateData.bind(this);
     }
 
-    handleUpdateName(event){
-        this.setState({bucket_name: event.target.value})
-    }
-
-    handleUpdateDescription(event){
+    handleDescriptionChange(event){
         this.setState({description: event.target.value})
-
-    }
-
-    handleUpdateCategory(event){
-        this.setState ({category: event.target.value})
     }
 
     componentDidMount() {
@@ -45,8 +35,11 @@ class UpdateBucket extends Component{
             window.localStorage.setItem('isLoggedIn', false)
         });
 
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+
+            url: url,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -54,46 +47,48 @@ class UpdateBucket extends Component{
             }
         })
             .then((response)=>{
-                let bucket_name = response.data.bucket.bucket_name;
-                let description = response.data.bucket.description;
-                let category = response.data.bucket.category;
-                this.setState ({bucket_name: bucket_name, description:description, category:category })
+                let description = response.data.activity.description;
+                this.setState ({description:description})
             })
             .catch((xhr) =>{
-                console.log(JSON.stringify(xhr));
+                swal("Error!", xhr.response.data.error, "error");
+                if (xhr.response.status == 404){
+                    this.setState({redirect:true})
+                }
 
             });
     }
 
-    handleUpdate(event){
+    handleUpdateData(event){
         event.preventDefault();
-        let data = {
-            bucket_name:this.state.bucket_name,
-            description:this.state.description,
-            category:this.state.category
-        };
+        let bucket_id = this.state.bucket_id;
+        let item_id = this.state.item_id;
+        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let data = {description: this.state.description};
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
+            url: url,
             method: 'PUT',
             data: data,
+            datatype: 'json',
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             },
-            datatype: "json"
         })
             .then((response)=>{
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, "error");
+
 
             });
+
     }
 
     render(){
         if (this.state.redirect){
-            return <Redirect to="/bucketlists/view"/>
+            return <Redirect to={"/bucketlists/" + this.state.bucket_id + "/items/view/"}/>
         }
 
         if (!this.state.isAuthorized){
@@ -101,25 +96,26 @@ class UpdateBucket extends Component{
                 <div>
                     <article className="content item-editor-page">
                         <div className="card card-block">
-                            <p>Unauthorized! Please log in</p>
+                            <p>Unauthorized! Please <Link to={'/login/'}>Login</Link></p>
                         </div>
                     </article>
                 </div>
             )
         }
 
-        return (
+
+        return(
             <div>
                 <Header/>
                 <Sidebar/>
                 <article className="content item-editor-page">
                     <div className="title-block">
-                        <h3 className="title"> Update item
+                        <h3 className="title"> Update Activity
                             <span className="sparkline bar"></span>
                         </h3>
                     </div>
 
-                    <form method="post" onSubmit={this.handleUpdate}>
+                    <form method="post" id="update_activity_form" onSubmit={this.handleUpdateData}>
                         <div className="card card-block">
                             <div className="form-group row">
                                 <label className="col-sm-2 form-control-label text-xs-right">
@@ -127,38 +123,22 @@ class UpdateBucket extends Component{
                                 </label>
 
                                 <div className="col-sm-10">
-                                    <input type="text" name="bucket_name" value={this.state.bucket_name} onChange={this.handleUpdateName} className="form-control boxed" placeholder="" />
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-sm-2 form-control-label text-xs-right">
-                                    Description:
-                                </label>
-
-                                <div className="col-sm-10">
-                                    <input type="text" name="description" value={this.state.description} onChange={this.handleUpdateDescription} className="form-control boxed" placeholder="" />
+                                    <input type="text" name="description" value={this.state.description} onChange={this.handleDescriptionChange} className="form-control boxed" placeholder="" />
                                 </div>
                             </div>
 
-                            <div className="form-group row">
-                                <label className="col-sm-2 form-control-label text-xs-right">
-                                    Category:
-                                </label>
-                                <div className="col-sm-10">
-                                    <input type="text" name="category" value={this.state.category} onChange={this.handleUpdateCategory} className="form-control boxed" placeholder="Eg Travel" />
-                                </div>
-                            </div>
+
                             <div className="col-sm-10 col-sm-offset-2">
                                 <button type="submit" className="btn btn-primary">
                                     Update
                                 </button>
                             </div>
-
                         </div>
                     </form>
                 </article>
             </div>
         )
+
     }
 }
-export default UpdateBucket;
+export default UpdateActivity;

@@ -1,0 +1,629 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> contains signup form 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "46ggne",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "46ggne",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Register>
+      <div>
+        <div
+          className="auth"
+        >
+          <div
+            className="auth-container"
+          >
+            <div
+              className="card"
+            >
+              <header
+                className="auth-header"
+              >
+                <h1
+                  className="auth-title"
+                >
+                  BUCKET-LIST
+                </h1>
+              </header>
+              <div
+                className="auth-content"
+              >
+                <p
+                  className="text-xs-center"
+                >
+                  REGISTER TO CONTINUE
+                </p>
+                <form
+                  id="signup"
+                  method="POST"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Email
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter email address"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="password"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Confirm Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="confirm_password"
+                      name="confirm_password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <button
+                      className="btn btn-block btn-primary"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <p
+                      className="text-muted text-xs-center"
+                    >
+                      Already have an account? 
+                      <Link
+                        replace={false}
+                        to="/login"
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          Login
+                        </a>
+                      </Link>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Register>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`<Register /> should change the values to the email input in the form 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "0qk5kk",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "0qk5kk",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Register>
+      <div>
+        <div
+          className="auth"
+        >
+          <div
+            className="auth-container"
+          >
+            <div
+              className="card"
+            >
+              <header
+                className="auth-header"
+              >
+                <h1
+                  className="auth-title"
+                >
+                  BUCKET-LIST
+                </h1>
+              </header>
+              <div
+                className="auth-content"
+              >
+                <p
+                  className="text-xs-center"
+                >
+                  REGISTER TO CONTINUE
+                </p>
+                <form
+                  id="signup"
+                  method="POST"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Email
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter email address"
+                      type="text"
+                      value="example@email.com"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="password"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Confirm Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="confirm_password"
+                      name="confirm_password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <button
+                      className="btn btn-block btn-primary"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <p
+                      className="text-muted text-xs-center"
+                    >
+                      Already have an account? 
+                      <Link
+                        replace={false}
+                        to="/login"
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          Login
+                        </a>
+                      </Link>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Register>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`<Register /> should change the values to the password input 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "83erqv",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "83erqv",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Register>
+      <div>
+        <div
+          className="auth"
+        >
+          <div
+            className="auth-container"
+          >
+            <div
+              className="card"
+            >
+              <header
+                className="auth-header"
+              >
+                <h1
+                  className="auth-title"
+                >
+                  BUCKET-LIST
+                </h1>
+              </header>
+              <div
+                className="auth-content"
+              >
+                <p
+                  className="text-xs-center"
+                >
+                  REGISTER TO CONTINUE
+                </p>
+                <form
+                  id="signup"
+                  method="POST"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Email
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter email address"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="password"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Confirm Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="confirm_password"
+                      name="confirm_password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <button
+                      className="btn btn-block btn-primary"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <p
+                      className="text-muted text-xs-center"
+                    >
+                      Already have an account? 
+                      <Link
+                        replace={false}
+                        to="/login"
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          Login
+                        </a>
+                      </Link>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Register>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`<Register /> should change the values to the password input in the form 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "dwrda8",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "dwrda8",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Register>
+      <div>
+        <div
+          className="auth"
+        >
+          <div
+            className="auth-container"
+          >
+            <div
+              className="card"
+            >
+              <header
+                className="auth-header"
+              >
+                <h1
+                  className="auth-title"
+                >
+                  BUCKET-LIST
+                </h1>
+              </header>
+              <div
+                className="auth-content"
+              >
+                <p
+                  className="text-xs-center"
+                >
+                  REGISTER TO CONTINUE
+                </p>
+                <form
+                  id="signup"
+                  method="POST"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Email
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter email address"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="password"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value="milimani2"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Confirm Password
+                    </label>
+                    <input
+                      className="form-control underlined"
+                      id="confirm_password"
+                      name="confirm_password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <button
+                      className="btn btn-block btn-primary"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <p
+                      className="text-muted text-xs-center"
+                    >
+                      Already have an account? 
+                      <Link
+                        replace={false}
+                        to="/login"
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          Login
+                        </a>
+                      </Link>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Register>
+  </Router>
+</MemoryRouter>
+`;

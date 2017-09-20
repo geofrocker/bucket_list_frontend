@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 class Login extends Component{
 
@@ -11,6 +12,7 @@ class Login extends Component{
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
+
     handleEmailChange(event){
         this.setState({email: event.target.value})
     }
@@ -34,7 +36,7 @@ class Login extends Component{
                 this.setState({redirect:true});
         })
             .catch((xhr) =>{
-                alert(xhr.response.data.error);
+                swal("Error!", xhr.response.data.error, 'error');
 
             });
     }
@@ -65,7 +67,7 @@ class Login extends Component{
                                 </div>
 
                                 <div className="form-group">
-                                    <button type="submit" className="btn btn-block btn-primary">Login</button>
+                                    <button type="submit" id="login-user" className="btn btn-block btn-primary">Login</button>
                                 </div>
                                 <div className="form-group">
                                     <p className="text-muted text-xs-center">Do not have an account? <Link to="/register">Register</Link>
