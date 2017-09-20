@@ -91,7 +91,7 @@ class CreateActivity extends Component{
                             </h3>
                         </div>
 
-                        <form method="post" onSubmit={this.handleSubmit}>
+                        <form method="post" id="create_activity_form" onSubmit={this.handleSubmit}>
                             <div className="card card-block">
                                 <div className="form-group row">
                                     <label className="col-sm-2 form-control-label text-xs-right">
