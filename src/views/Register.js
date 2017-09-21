@@ -31,16 +31,11 @@ class Register extends Component{
             url : 'http://127.0.0.1:5000/api/v1/auth/register',
             data: {email: this.state.email, password: this.state.password, confirm_password:this.state.confirm_password},
             datatype: "json",
-            headers: {
-                'Content-Type': 'application/json'
-            },
             method: "post"
         })
             .then((response)=>{
-                console.log(JSON.stringify(response));
-                window.localStorage.setItem('token', response.data.token);
-                window.localStorage.setItem("isLoggedIn", true);
                 swal("Success", response.data.success, "success");
+                window.localStorage.setItem('token', response.data.token);
                 this.setState({redirect:true});
             })
             .catch((xhr) =>{

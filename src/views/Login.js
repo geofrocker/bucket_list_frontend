@@ -28,9 +28,6 @@ class Login extends Component{
             data: {email: this.state.email, password: this.state.password},
             datatype: "json",
             method: "post",
-            headers:{
-
-            }
         })
             .then((response)=>{
                 console.log(JSON.stringify(response));
