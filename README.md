@@ -13,7 +13,7 @@ This is a bucketlist frontend client in react js
   ### Setup and Installation
   1. Navigate to your working directory.
   2. Navigate to your project directory
-  3. Clone the project via git, using ~$git clone https://github.com/ridgekimani/bucket_list_frontend.git or download the zipped file from https://github.com/ridgekimani/bucket_list
+  3. Clone the project via git, using ~$git clone https://github.com/ridgekimani/bucket_list_frontend.git or download the zipped file from https://github.com/ridgekimani/bucket_list_frontend
   4. Install the dependencies using npm install  
   ### Running the app
     On your shell, run with the command ~$ npm start
