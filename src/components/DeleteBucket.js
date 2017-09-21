@@ -1,31 +1,31 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-class DeleteActivity extends Component {
+class DeleteBucket extends Component {
 
     constructor(props) {
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
-        let item_id = this.props.match.params.item_id;
-        this.state = {bucket_id: bucket_id, isAuthorized: false, item_id:item_id, redirect:false};
+        this.state = {bucket_id: bucket_id, isAuthorized: false, redirect:false};
         this.confirmDelete = this.confirmDelete.bind(this);
     }
 
     componentDidMount() {
-        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
         axios({
-            url: url,
+            url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
         })
-            .then(() => {
+            .then((response) => {
+                let bucket_id = response.data.bucket.id;
+                this.setState({bucket_id: bucket_id});
                 this.confirmDelete()
             })
             .catch((xhr) => {
@@ -38,8 +38,6 @@ class DeleteActivity extends Component {
     }
 
     confirmDelete(){
-        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
-
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover!",
@@ -56,26 +54,26 @@ class DeleteActivity extends Component {
                 }
                 else{
                     axios({
-                        url: url,
+                        url: 'http://127.0.0.1:5000/api/v1/bucketlists/' + this.state.bucket_id,
                         method: "DELETE",
                         headers: {
                             'token': window.localStorage.getItem('token'),
                             'Content-Type': 'application/json'
                         }
                     }).then(()=>{
-                        swal("Success!", "Item deleted successfully", "success");
+                        swal("Success!", "Bucket deleted successfully", "success");
                         this.setState({redirect:true})
                     })
                 }
 
             })
 
-            .catch((xhr) => {
-                swal("Error", xhr.response.data.error, "error");
-                if (xhr.response.status === 404) {
-                    this.setState({redirect: true})
-                }
-            })
+                .catch((xhr) => {
+                    swal("Error", xhr.response.data.error, "error");
+                    if (xhr.response.status === 404) {
+                        this.setState({redirect: true})
+                    }
+                })
     }
 
     render(){
@@ -94,4 +92,4 @@ class DeleteActivity extends Component {
     }
 }
 
-export default DeleteActivity;
+export default DeleteBucket;

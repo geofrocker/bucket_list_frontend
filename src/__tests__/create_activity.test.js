@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateActivity from '../views/CreateActivity';
+import CreateActivity from '../components/CreateActivity';
 
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';

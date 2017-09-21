@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import CreateBucket from './views/CreateBucket';
-import ViewBuckets from './views/ViewBuckets';
-import UpdateBucket from './views/UpdateBucket';
-import DeleteBucket from './views/DeleteBucket';
-import CreateActivity from './views/CreateActivity'
-import ViewActivities from './views/ViewActivities'
-import UpdateActivity from "./views/UpdateActivity";
-import DeleteActivity from './views/DeleteActivity';
-import SearchData from './views/SearchData';
-import NotFound from './views/NotFound';
-import Register from './views/Register';
-import Login from './views/Login';
+import CreateBucket from './components/CreateBucket';
+import ViewBuckets from './components/ViewBuckets';
+import UpdateBucket from './components/UpdateBucket';
+import DeleteBucket from './components/DeleteBucket';
+import CreateActivity from './components/CreateActivity'
+import ViewActivities from './components/ViewActivities'
+import UpdateActivity from "./components/UpdateActivity";
+import DeleteActivity from './components/DeleteActivity';
+import SearchData from './components/SearchData';
+import NotFound from './components/NotFound';
+import Register from './components/Register';
+import Login from './components/Login';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 

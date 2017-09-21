@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateBucket from '../views/UpdateBucket';
+import UpdateBucket from '../components/UpdateBucket';
 
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';

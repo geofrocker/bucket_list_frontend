@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewBuckets from '../views/ViewBuckets';
+import ViewBuckets from '../components/ViewBuckets';
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import {MemoryRouter} from 'react-router-dom';

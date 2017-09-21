@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import swal from 'sweetalert';

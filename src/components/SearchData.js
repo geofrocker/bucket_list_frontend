@@ -1,55 +1,57 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
+import {parse}  from 'querystring';
+import swal from 'sweetalert';
 
+class SearchData extends Component {
 
-class ViewBuckets extends Component{
-
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {isAuthorized: false, data:[], login_redirect:false};
+        let query = this.props.location.search;
+        for (let value in parse(query)){
+            this.state = {q:parse(query)[value], login_redirect:false, redirect:false, activities:[], buckets:[]}
+        }
     }
 
     componentDidMount() {
+        if ((this.state.q).length === 0){
+            this.setState({redirect:true})
+        }
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
+            url: 'http://127.0.0.1:5000/api/v1/search?q=' +this.state.q,
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
                 'Content-Type': 'application/json'
             }
         })
-            .then((response)=>{
-                this.setState({data:response.data.buckets, isAuthorized: true});
+            .then((response) => {
+                this.setState({activities: response.data.activities, buckets:response.data.buckets, isAuthorized: true});
+
             })
-
-            .catch((xhr) =>{
-                this.setState({login_redirect:true})
-
+            .catch((xhr) => {
+                swal("Error!", xhr.response.data.error, "error");
+                this.setState({redirect:true})
             });
     }
-
     render(){
-        if(this.state.login_redirect){
-            return(
-                <Redirect to={'/login/'}/>
-            )
+        if(this.state.redirect){
+            return(<Redirect to={'/bucketlists/view/'}/>)
         }
 
-        else if (!this.state.isAuthorized){
+        if(this.state.login_redirect){
+            return(<Redirect to={'/login/'}/>)
+        }
+
+        if (!this.state.isAuthorized){
             return(
                 <div>
                     <article className="content item-editor-page">
-
                     </article>
                 </div>
-            )
-        }
-        if(this.state.login_redirect){
-            return(
-                <Redirect to={'/login/'}/>
             )
         }
 
@@ -59,7 +61,7 @@ class ViewBuckets extends Component{
                 <Sidebar/>
                 <article className="content responsive-tables-page">
                     <div className="title-block">
-                        <h1 className="title"> View Buckets </h1>
+                        <h1 className="title"> Search results</h1>
                     </div>
 
                     <section className="section">
@@ -68,42 +70,34 @@ class ViewBuckets extends Component{
                                 <div className="card">
                                     <div className="card-block">
                                         <div className="card-title-block">
-                                            <h3 className="title"> Your Buckets </h3>
                                         </div>
                                         <section className="example">
                                             <div className="table-flip-scroll">
-                                                <table id="buckets_table" className="table table-striped table-bordered table-hover flip-content">
+                                                <table className="table table-striped table-bordered table-hover flip-content">
                                                     <thead className="flip-header">
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Description</th>
                                                         <th>Date Created</th>
-                                                        <th>Activities</th>
-                                                        <th>Activities</th>
-                                                        <th>Action</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>{this.state.data.map(function(item, key){
+                                                    <tbody>{this.state.buckets.map(function(item, key){
                                                         return (
                                                             <tr key={key}>
                                                                 <Link to={'/bucketlists/update/' + item.id}><td>{item.bucket_name}</td></Link>
                                                                 <td>{item.description}</td>
                                                                 <td>{item.created}</td>
-                                                                <td className="center">
-                                                                    <button type="button" className="btn btn-success-outline btn-sm">
-                                                                        <Link to={'/bucketlists/' + item.id + '/items/create/'}><td>Add</td></Link>
-                                                                    </button>
-                                                                </td>
-                                                                <td className="center" >
-                                                                    <button type="button" className="btn btn-success-outline btn-sm">
-                                                                        <Link to={'/bucketlists/' + item.id + '/items/view/'}><td>View</td></Link>
-                                                                    </button>
-                                                                </td>
-                                                                <td className="center" >
-                                                                    <button type="button" className="btn btn-danger-outline btn-sm">
-                                                                        <Link to={'/bucketlists/delete/' + item.id}><td>Delete</td></Link>
-                                                                    </button>
-                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })}
+                                                    </tbody>
+                                                    <tbody>
+                                                    {this.state.activities.map(function(item, key){
+                                                        return (
+                                                            <tr key={key}>
+                                                                <Link to={'/bucketlists/' + item.bucket_id + '/items/update/' + item.activity_id}><td>{item.description}</td></Link>
+                                                                <td>{item.description}</td>
+                                                                <td>{item.created}</td>
                                                             </tr>
                                                         )
                                                     })}
@@ -117,9 +111,11 @@ class ViewBuckets extends Component{
                         </div>
                     </section>
                 </article>
+
             </div>
-        )
+            )
+
     }
 }
 
-export default ViewBuckets;
+export default SearchData;
