@@ -9,7 +9,7 @@ class Header extends React.Component{
         super(props);
         let token = window.localStorage.getItem('token');
         let isLoggedIn=  window.localStorage.getItem('isLoggedIn');
-        this.state = {token:token, isLoggedIn:isLoggedIn, q:'', data:[], search:false};
+        this.state = {token:token, isLoggedIn:isLoggedIn, q:'', data:[], search:false, redirect:false};
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSearchData = this.handleSearchData.bind(this);
@@ -18,7 +18,7 @@ class Header extends React.Component{
     handleLogout(event){
         event.preventDefault();
         axios({
-            url: "https://ridge-bucket-list-api.herokuapp.com/api/v1/auth/logout",
+            url: "http://127.0.0.1:5000/api/v1/auth/logout",
             method: "POST",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -40,7 +40,7 @@ class Header extends React.Component{
     }
 
     handleSearch(event){
-        event.preventDefault()
+        event.preventDefault();
         this.setState({search:true})
     }
 

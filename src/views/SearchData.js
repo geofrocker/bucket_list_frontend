@@ -3,7 +3,8 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
-import {parse}  from 'querystring'
+import {parse}  from 'querystring';
+import swal from 'sweetalert';
 
 class SearchData extends Component {
 
@@ -11,7 +12,7 @@ class SearchData extends Component {
         super(props);
         let query = this.props.location.search;
         for (let value in parse(query)){
-            this.state = {q:parse(query)[value], login_redirect:false, redirect:false}
+            this.state = {q:parse(query)[value], login_redirect:false, redirect:false, activities:[], buckets:[]}
         }
     }
 
@@ -31,11 +32,15 @@ class SearchData extends Component {
                 this.setState({activities: response.data.activities, buckets:response.data.buckets, isAuthorized: true});
 
             })
-            .catch(() => {
-                this.setState({login_redirect:true})
+            .catch((xhr) => {
+                swal("Error!", xhr.response.data.error, "error");
+                this.setState({redirect:true})
             });
     }
     render(){
+        if(this.state.redirect){
+            return(<Redirect to={'/bucketlists/view/'}/>)
+        }
 
         if(this.state.login_redirect){
             return(<Redirect to={'/login/'}/>)
