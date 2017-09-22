@@ -7,6 +7,10 @@ import {parse}  from 'querystring';
 import swal from 'sweetalert';
 
 class SearchData extends Component {
+    /**
+     * This component is used to show search activities and items.
+     * render --> render jsx
+     */
 
     constructor(props) {
         super(props);
@@ -37,6 +41,7 @@ class SearchData extends Component {
                 this.setState({redirect:true})
             });
     }
+
     render(){
         if(this.state.redirect){
             return(<Redirect to={'/bucketlists/view/'}/>)

@@ -6,6 +6,14 @@ import axios from 'axios'
 import swal from 'sweetalert';
 
 class CreateActivity extends Component{
+    /**
+     * This component is used to create activities or items.
+     * It handles the following methods:
+     *  handleDescriptionChange --> used to set the description state in the constructor
+     *  handleSubmit --> Used to post data in the end point
+     *  render --> Used to return jsx
+     */
+
     constructor(props){
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
@@ -118,4 +126,6 @@ class CreateActivity extends Component{
             )
     }
 }
+
+
 export default CreateActivity;

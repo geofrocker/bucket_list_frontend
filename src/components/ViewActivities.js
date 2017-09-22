@@ -6,6 +6,12 @@ import  {Redirect, Link} from 'react-router-dom'
 
 
 class ViewActivities extends Component{
+    /**
+     * This component is used to create activities and items.
+     * It handles the following methods:
+     *  handleClick --> used to redirect to the create items url
+     *  render --> Used to return jsx
+     */
 
     constructor(props){
         super(props);

@@ -4,6 +4,13 @@ import {Redirect} from 'react-router-dom';
 
 
 class Header extends React.Component{
+    /**
+     * This component is used to render the header component.
+     * It handles the following methods:
+     *  handleLogout() --> used to log out the current logged in user
+     *  handleSearchData() --> used to handle the data that will be showed in the search
+     *  render --> Used to return jsx
+     */
 
     constructor(props){
         super(props);

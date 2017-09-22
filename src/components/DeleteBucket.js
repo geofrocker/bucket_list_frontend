@@ -6,6 +6,12 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 class DeleteBucket extends Component {
+    /**
+     * This component is used to Delete buckets.
+     * It handles the following methods:
+     *  confirmDelete --> used to confirm and delete the bucket
+     *  render --> Used to return jsx
+     */
 
     constructor(props) {
         super(props);

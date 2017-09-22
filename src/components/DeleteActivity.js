@@ -6,6 +6,12 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 class DeleteActivity extends Component {
+    /**
+     * This component is used to DeleteActivites.
+     * It handles the following methods:
+     *  confirmDelete --> used to confirm and delete the activities
+     *  render --> Used to return jsx
+     */
 
     constructor(props) {
         super(props);

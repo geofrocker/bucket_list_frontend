@@ -6,6 +6,10 @@ import {Link, Redirect} from 'react-router-dom';
 
 
 class ViewBuckets extends Component{
+    /**
+     * This component is used to view buckets.
+     *  render --> Used to return jsx
+     */
 
     constructor(props){
         super(props);

@@ -2,6 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class Sidebar extends React.Component{
+
+    /**
+     * This component is used to show the sidebar.
+     */
     render(){
         return (
             <aside className="sidebar">

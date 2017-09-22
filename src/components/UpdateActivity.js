@@ -6,6 +6,14 @@ import {Redirect} from 'react-router-dom';
 import swal from 'sweetalert';
 
 class UpdateActivity extends Component{
+    /**
+     * This component is used to create activities and items.
+     * It handles the following methods:
+     *  handleDescriptionChange --> used to set the description state in the constructor
+     *  handleUpdateData --> Used to post data in the end point
+     *  render --> Used to return jsx
+     */
+
     constructor(props){
         super(props);
         let bucket_id = this.props.match.params.bucket_id;
