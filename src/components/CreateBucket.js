@@ -27,7 +27,7 @@ class CreateBucket extends Component{
 
     componentDidMount() {
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/callback',
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/callback',
             method: "GET",
             headers: {
                 'token': window.localStorage.getItem('token'),
@@ -64,7 +64,7 @@ class CreateBucket extends Component{
         };
         
         axios({
-            url: 'http://127.0.0.1:5000/api/v1/bucketlists/',
+            url: 'https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/',
             method: 'POST',
             datatype: "json",
             data: data,

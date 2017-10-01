@@ -22,7 +22,7 @@ class DeleteActivity extends Component {
     }
 
     componentDidMount() {
-        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
         axios({
             url: url,
             method: "GET",
@@ -44,7 +44,7 @@ class DeleteActivity extends Component {
     }
 
     confirmDelete(){
-        let url = "http://127.0.0.1:5000/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
+        let url = "https://ridge-bucket-list-api.herokuapp.com/api/v1/bucketlists/" + this.state.bucket_id + "/items/" + this.state.item_id;
 
         swal({
             title: "Are you sure?",

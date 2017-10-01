@@ -39,7 +39,7 @@ class Register extends Component{
     handleSubmit(event){
         event.preventDefault();
         axios({
-            url : 'http://127.0.0.1:5000/api/v1/auth/register',
+            url : 'https://ridge-bucket-list-api.herokuapp.com/api/v1/auth/register',
             data: {email: this.state.email, password: this.state.password, confirm_password:this.state.confirm_password},
             datatype: "json",
             method: "post"

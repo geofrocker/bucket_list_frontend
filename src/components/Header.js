@@ -25,7 +25,7 @@ class Header extends React.Component{
     handleLogout(event){
         event.preventDefault();
         axios({
-            url: "http://127.0.0.1:5000/api/v1/auth/logout",
+            url: "https://ridge-bucket-list-api.herokuapp.com/api/v1/auth/logout",
             method: "POST",
             headers: {
                 'token': window.localStorage.getItem('token'),
