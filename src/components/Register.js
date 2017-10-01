@@ -5,6 +5,17 @@ import swal from 'sweetalert';
 
 
 class Register extends Component{
+
+    /**
+     * This component is used to Register a user.
+     * It handles the following methods:
+     *  handleEmailChange() --> Used to set the state that is being changed in the value of the input to the state
+     *  handlePasswordChange() --> Used to set the state of the password that is being changed
+     *  handlePasswordChange1() --> used to change the state of the confirm password
+     *  handleSubmit() --> Used to submit data to the specified endpoint
+     *  render --> Used to return jsx
+     */
+
     constructor(props) {
         super(props);
         this.state = {email: '', password: '', confirm_password: '', redirect: false};

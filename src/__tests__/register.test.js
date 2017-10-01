@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from '../views/Register';
+import Register from '../components/Register';
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import {MemoryRouter} from 'react-router-dom';

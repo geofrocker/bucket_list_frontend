@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import  {Redirect, Link} from 'react-router-dom'
 
 
 class ViewActivities extends Component{
+    /**
+     * This component is used to create activities and items.
+     * It handles the following methods:
+     *  handleClick --> used to redirect to the create items url
+     *  render --> Used to return jsx
+     */
 
     constructor(props){
         super(props);

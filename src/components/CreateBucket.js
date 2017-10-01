@@ -1,11 +1,21 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 class CreateBucket extends Component{
+    /**
+     * This component is used to create buckets.
+     * It handles the following methods:
+     * handleNameChange --> used to set the name of the bucket in the state
+     *  handleDescriptionChange --> used to set the description state in the constructor
+     *  handleCategoryChange ---> Used to set the category of the state
+     *  handleSubmit --> Used to post data in the end point
+     *  render --> Used to return jsx
+     */
+
     constructor(props){
         super(props);
         this.state = {bucket_name:'', description:'', category:'', token: '',isAuthorized:false, login_redirect:false};
@@ -147,4 +157,5 @@ class CreateBucket extends Component{
         )
     }
 }
+
 export default CreateBucket;

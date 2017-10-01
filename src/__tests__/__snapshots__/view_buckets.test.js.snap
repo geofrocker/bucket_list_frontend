@@ -12,7 +12,7 @@ exports[`<ViewBuckets /> contains bucket table 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "330i9r",
+            "key": "mnkpnd",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<ViewBuckets /> contains bucket table 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "330i9r",
+          "key": "mnkpnd",
           "pathname": "/",
           "search": "",
           "state": undefined,

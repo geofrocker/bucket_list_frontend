@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewActivities from '../views/ViewActivities';
+import ViewActivities from '../components/ViewActivities';
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import {MemoryRouter} from 'react-router-dom';

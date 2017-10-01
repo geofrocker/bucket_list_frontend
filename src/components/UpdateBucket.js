@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 class UpdateBucket extends Component{
+    /**
+     * This component is used to update activities and items.
+     * It handles the following methods:
+     *  handleUpdateName --> used to set the name state in the constructor
+     *  handleUpdateDescription --> used to set the description state
+     *  handleUpdateCategory --> Used to set the category in the state
+     *  handleUpdate --> Used to post data in the end point
+     *  render --> Used to return jsx
+     */
 
     constructor(props){
         super(props);

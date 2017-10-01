@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 class DeleteActivity extends Component {
+    /**
+     * This component is used to DeleteActivites.
+     * It handles the following methods:
+     *  confirmDelete --> used to confirm and delete the activities
+     *  render --> Used to return jsx
+     */
 
     constructor(props) {
         super(props);

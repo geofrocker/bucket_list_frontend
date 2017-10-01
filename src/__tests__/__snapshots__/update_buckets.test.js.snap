@@ -12,7 +12,7 @@ exports[`<UpdateBucket /> contains  update bucket form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "lcsync",
+            "key": "tghjog",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<UpdateBucket /> contains  update bucket form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "lcsync",
+          "key": "tghjog",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -67,7 +67,7 @@ exports[`<UpdateBucket /> should change values in the form 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "xjw1e0",
+            "key": "gyfd60",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -81,7 +81,7 @@ exports[`<UpdateBucket /> should change values in the form 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "xjw1e0",
+          "key": "gyfd60",
           "pathname": "/",
           "search": "",
           "state": undefined,
