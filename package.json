@@ -36,6 +36,11 @@
     "eject": "react-scripts eject"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ],
     "collectCoverage": true
   },
   "devDependencies": {
