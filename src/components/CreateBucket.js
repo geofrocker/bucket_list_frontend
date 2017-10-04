@@ -91,7 +91,7 @@ class CreateBucket extends Component{
 
         if (!this.state.isAuthorized){
             return(
-                <div>
+                <div id="unauthorized">
                     <article className="content item-editor-page">
 
                     </article>
